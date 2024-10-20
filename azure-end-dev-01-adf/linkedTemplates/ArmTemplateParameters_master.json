@@ -1,0 +1,48 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "azure-end-dev-01-adf"
+		},
+		"AzureDataLakeStorage1_properties_typeProperties_url": {
+			"value": "https://azureenddev01datalake.dfs.core.windows.net/"
+		},
+		"AzureDataLakeStorage1_properties_typeProperties_tenant": {
+			"value": "485a6247-dee9-4310-bc5e-9d4c38481a0c"
+		},
+		"AzureDataLakeStorage1_properties_typeProperties_servicePrincipalId": {
+			"value": "96cf072d-4e42-40e4-9a19-5acc00902e42"
+		},
+		"AzureDataLakeStorage2_properties_typeProperties_url": {
+			"value": "https://azuredev01sink.dfs.core.windows.net/"
+		},
+		"AzureDataLakeStorage2_properties_typeProperties_tenant": {
+			"value": "485a6247-dee9-4310-bc5e-9d4c38481a0c"
+		},
+		"AzureDataLakeStorage2_properties_typeProperties_servicePrincipalId": {
+			"value": "96cf072d-4e42-40e4-9a19-5acc00902e42"
+		},
+		"AzureKeyVault1_properties_typeProperties_baseUrl": {
+			"value": "https://azureenddev01keyvalut.vault.azure.net/"
+		},
+		"AzureSqlDatabasefor internaldb_source_properties_typeProperties_server": {
+			"value": "azuredevserver02.database.windows.net"
+		},
+		"AzureSqlDatabasefor internaldb_source_properties_typeProperties_database": {
+			"value": "Azure sql"
+		},
+		"AzureSqlDatabasefor internaldb_source_properties_typeProperties_userName": {
+			"value": "azuredev01"
+		},
+		"RestService_source_properties_typeProperties_url": {
+			"value": "https://airlabs.co/api/v9/airlines"
+		},
+		"containerUri": {
+			"value": ""
+		},
+		"containerSasToken": {
+			"value": ""
+		}
+	}
+}

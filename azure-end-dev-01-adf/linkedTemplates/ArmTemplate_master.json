@@ -1,0 +1,119 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Data Factory name",
+			"defaultValue": "azure-end-dev-01-adf"
+		},
+		"AzureDataLakeStorage1_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://azureenddev01datalake.dfs.core.windows.net/"
+		},
+		"AzureDataLakeStorage1_properties_typeProperties_tenant": {
+			"type": "string",
+			"defaultValue": "485a6247-dee9-4310-bc5e-9d4c38481a0c"
+		},
+		"AzureDataLakeStorage1_properties_typeProperties_servicePrincipalId": {
+			"type": "string",
+			"defaultValue": "96cf072d-4e42-40e4-9a19-5acc00902e42"
+		},
+		"AzureDataLakeStorage2_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://azuredev01sink.dfs.core.windows.net/"
+		},
+		"AzureDataLakeStorage2_properties_typeProperties_tenant": {
+			"type": "string",
+			"defaultValue": "485a6247-dee9-4310-bc5e-9d4c38481a0c"
+		},
+		"AzureDataLakeStorage2_properties_typeProperties_servicePrincipalId": {
+			"type": "string",
+			"defaultValue": "96cf072d-4e42-40e4-9a19-5acc00902e42"
+		},
+		"AzureKeyVault1_properties_typeProperties_baseUrl": {
+			"type": "string",
+			"defaultValue": "https://azureenddev01keyvalut.vault.azure.net/"
+		},
+		"AzureSqlDatabasefor internaldb_source_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "azuredevserver02.database.windows.net"
+		},
+		"AzureSqlDatabasefor internaldb_source_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "Azure sql"
+		},
+		"AzureSqlDatabasefor internaldb_source_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "azuredev01"
+		},
+		"RestService_source_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://airlabs.co/api/v9/airlines"
+		},
+		"containerUri": {
+			"type": "string",
+			"metadata": "URI to storage account containing linked ARM templates"
+		},
+		"containerSasToken": {
+			"type": "string",
+			"metadata": "Sas token to storage account containing linked ARM templates"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "azure-end-dev-01-adf_ArmTemplate_0",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2024-03-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_0.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"AzureKeyVault1_properties_typeProperties_baseUrl": {
+						"value": "[parameters('AzureKeyVault1_properties_typeProperties_baseUrl')]"
+					},
+					"RestService_source_properties_typeProperties_url": {
+						"value": "[parameters('RestService_source_properties_typeProperties_url')]"
+					},
+					"AzureDataLakeStorage1_properties_typeProperties_url": {
+						"value": "[parameters('AzureDataLakeStorage1_properties_typeProperties_url')]"
+					},
+					"AzureDataLakeStorage1_properties_typeProperties_tenant": {
+						"value": "[parameters('AzureDataLakeStorage1_properties_typeProperties_tenant')]"
+					},
+					"AzureDataLakeStorage1_properties_typeProperties_servicePrincipalId": {
+						"value": "[parameters('AzureDataLakeStorage1_properties_typeProperties_servicePrincipalId')]"
+					},
+					"AzureDataLakeStorage2_properties_typeProperties_url": {
+						"value": "[parameters('AzureDataLakeStorage2_properties_typeProperties_url')]"
+					},
+					"AzureDataLakeStorage2_properties_typeProperties_tenant": {
+						"value": "[parameters('AzureDataLakeStorage2_properties_typeProperties_tenant')]"
+					},
+					"AzureDataLakeStorage2_properties_typeProperties_servicePrincipalId": {
+						"value": "[parameters('AzureDataLakeStorage2_properties_typeProperties_servicePrincipalId')]"
+					},
+					"AzureSqlDatabasefor internaldb_source_properties_typeProperties_server": {
+						"value": "[parameters('AzureSqlDatabasefor internaldb_source_properties_typeProperties_server')]"
+					},
+					"AzureSqlDatabasefor internaldb_source_properties_typeProperties_database": {
+						"value": "[parameters('AzureSqlDatabasefor internaldb_source_properties_typeProperties_database')]"
+					},
+					"AzureSqlDatabasefor internaldb_source_properties_typeProperties_userName": {
+						"value": "[parameters('AzureSqlDatabasefor internaldb_source_properties_typeProperties_userName')]"
+					}
+				}
+			},
+			"dependsOn": []
+		}
+	]
+}
